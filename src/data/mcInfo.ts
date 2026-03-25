@@ -1,6 +1,6 @@
 export const mcInfo = {
   name: 'Sheeba Diana Adams',
-  stageName: 'Sheeba Diana Adams',
+  stageName: 'MC Sheeba Diana Adams',
   tagline: 'Professional MC & Event Host',
   heroIntroduction: 'Bringing energy, elegance, and unforgettable moments to every event.',
   biography: `Sheeba Diana Adams is a dynamic and charismatic Master of Ceremonies with a passion for creating unforgettable event experiences. With years of experience commanding stages at weddings, corporate galas, and private celebrations, Sheeba brings a unique blend of energy, professionalism, and warmth to every occasion.
@@ -15,14 +15,13 @@ Whether it's guiding a bride and groom through their special day, energizing a c
     happyClients: '450+',
     citiesCovered: '20+',
   },
-  email: 'bookings@sheebadiana.com',
-  phone: '+1 (555) 987-6543',
+  email: 'diana9595@gmail.com',
+  phone: '+91 9880927934',
   location: 'Available Nationwide',
-  availability: 'Currently booking for 2025-2026 events',
+  availability: 'Currently booking for 2026-2027 events',
   socialLinks: {
-    instagram: 'https://instagram.com/sheebadiana',
+    instagram: 'https://instagram.com/sheeba_diana',
     facebook: 'https://facebook.com/sheebadiana',
-    tiktok: 'https://tiktok.com/@sheebadiana',
     youtube: 'https://youtube.com/@sheebadiana',
   },
 };
