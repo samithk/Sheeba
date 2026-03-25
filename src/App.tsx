@@ -3,7 +3,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Layout } from "@/components/layout/Layout";
 import { SkipToContent } from "@/components/ui/SkipToContent";
 import { LoadingFallback } from "@/components/ui/LoadingFallback";
@@ -12,11 +11,10 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { AnimatePresence } from "framer-motion";
 import { lazy, Suspense } from "react";
 
-// Code-split route components for better performance
 const Index = lazy(() => import("./pages/Index"));
-const Portfolio = lazy(() => import("./pages/Portfolio"));
-const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const About = lazy(() => import("./pages/About"));
+const Gallery = lazy(() => import("./pages/Gallery"));
+const Partnerships = lazy(() => import("./pages/Partnerships"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -28,54 +26,12 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route
-          path="/"
-          element={
-            <PageTransition>
-              <Index />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/portfolio"
-          element={
-            <PageTransition>
-              <Portfolio />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/project/:slug"
-          element={
-            <PageTransition>
-              <ProjectDetail />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <PageTransition>
-              <About />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <PageTransition>
-              <Contact />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="*"
-          element={
-            <PageTransition>
-              <NotFound />
-            </PageTransition>
-          }
-        />
+        <Route path="/" element={<PageTransition><Index /></PageTransition>} />
+        <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/gallery" element={<PageTransition><Gallery /></PageTransition>} />
+        <Route path="/partnerships" element={<PageTransition><Partnerships /></PageTransition>} />
+        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   );
@@ -84,20 +40,18 @@ function AnimatedRoutes() {
 const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <SkipToContent />
-            <Layout>
-              <Suspense fallback={<LoadingFallback />}>
-                <AnimatedRoutes />
-              </Suspense>
-            </Layout>
-          </BrowserRouter>
-        </TooltipProvider>
-      </ThemeProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <SkipToContent />
+          <Layout>
+            <Suspense fallback={<LoadingFallback />}>
+              <AnimatedRoutes />
+            </Suspense>
+          </Layout>
+        </BrowserRouter>
+      </TooltipProvider>
     </QueryClientProvider>
   </ErrorBoundary>
 );
